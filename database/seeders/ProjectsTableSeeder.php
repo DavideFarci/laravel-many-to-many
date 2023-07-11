@@ -16,18 +16,17 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        // $language = Language::all()->pluck('id');
         foreach (config('projects') as $objProject) {
 
             $project = Project::create([
-                "title" => $objProject['title'],
-                "author" => $objProject['author'],
+                "title"         => $objProject['title'],
+                "author"        => $objProject['author'],
                 "creation_date" => $objProject['creation_date'],
-                "last_update" => $objProject['last_update'],
+                "last_update"   => $objProject['last_update'],
                 "collaborators" => $objProject['collaborators'],
-                "description" => $objProject['description'],
-                "link_github" => $objProject['link_github'],
-                "type_id" => $objProject['type_id'],
+                "description"   => $objProject['description'],
+                "link_github"   => $objProject['link_github'],
+                "type_id"       => $objProject['type_id'],
             ]);
 
             $project->languages()->sync($objProject['languages']);
