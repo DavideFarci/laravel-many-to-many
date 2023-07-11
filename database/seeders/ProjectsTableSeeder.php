@@ -16,7 +16,7 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        // $languages = Language::all()->pluck('id');
+        // $language = Language::all()->pluck('id');
         foreach (config('projects') as $objProject) {
 
             $project = Project::create([
@@ -30,9 +30,7 @@ class ProjectsTableSeeder extends Seeder
                 "type_id" => $objProject['type_id'],
             ]);
 
-            foreach ($objProject['languages'] as $language) {
-                $project->languages()->sync($language);
-            }
+            $project->languages()->sync($objProject['languages']);
         }
     }
 }
