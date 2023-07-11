@@ -22,7 +22,6 @@ return new class extends Migration
             $table->date('last_update');
             $table->string('collaborators', 150)->nullable();
             $table->text('description')->nullable();
-            $table->integer('languages');
             $table->string('link_github', 150);
 
             $table->softDeletes();

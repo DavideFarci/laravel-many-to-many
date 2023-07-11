@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Language;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -15,8 +16,12 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
+        // $languages = Language::all()->pluck('id');
         foreach (config('projects') as $objProject) {
-            Project::create($objProject);
+
+            $project = Project::create($objProject);
+
+            $project->languages()->sync([1, 2, 3]);
         }
     }
 }
