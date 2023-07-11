@@ -29,7 +29,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('Admin.projects.create');
+        return view('Admin.languages.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class LanguageController extends Controller
         $newLanguage->name = $data['name'];
         $newLanguage->save();
 
-        return redirect()->route('admin.language.index', ['project' => $newLanguage]);
+        return redirect()->route('admin.language.index', ['language' => $newLanguage]);
     }
 
     /**
@@ -69,9 +69,9 @@ class LanguageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Language $language)
     {
-        return view('admin.projects.edit');
+        return view('admin.languages.edit', compact('language'));
     }
 
     /**
