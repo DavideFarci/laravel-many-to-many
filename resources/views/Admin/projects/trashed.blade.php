@@ -35,6 +35,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Languages</th>
                 <th scope="col">Link Github</th>
+                <th class="w-25" scope="col">   </th>
             </tr>
         </thead>
         <tbody>
@@ -53,12 +54,11 @@
                     </td>
                     <td>{{ $project->link_github }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.project.show', ['project' => $project]) }}">View</a>
                         <form class="d-inline-block" method="POST" action="{{ route('admin.project.restore', ['project' => $project]) }}">
                             @csrf
                             <button class="btn btn-warning">Restore</button>
                         </form>
-                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->slug }}">
+                        <button type="button" class="btn btn-danger js-delete d-inline-block" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}">
                             Delete
                         </button>
                     </td>
@@ -81,10 +81,10 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     <form
                         action=""
+                        data-template="{{ route('admin.project.harddelete', ['project' => '*****']) }}"
                         method="post"
                         class="d-inline-block"
                         id="confirm-delete"
-                        data-template="{{ route('admin.project.harddelete', ['project' => '*****']) }}"
                     >
                         @csrf
                         @method('delete')

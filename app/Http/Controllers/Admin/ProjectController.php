@@ -169,10 +169,11 @@ class ProjectController extends Controller
     public function harddelete($slug)
     {
         $project = Project::withTrashed()->find($slug);
-        $project = Project::where('slug', $slug)->firstOrFail();
+
+
+        // se ho il trashed lo inserisco nel harddelete
         $project->languages()->detach();
         $project->forceDelete();
-
         return to_route('admin.project.trashed')->with('delete_success', $project);
     }
 
