@@ -58,16 +58,17 @@ class ProjectController extends Controller
 
         $data = $request->all();
         // Salvare i dati nel database
-        $newProject = new Project();
-        $newProject->title = $data['title'];
-        $newProject->author = $data['author'];
-        $newProject->creation_date = $data['creation_date'];
-        $newProject->last_update = $data['last_update'];
-        $newProject->collaborators = $data['collaborators'];
-        $newProject->description = $data['description'];
-        // $newProject->languages = $data['languages'];
-        $newProject->link_github = $data['link_github'];
-        $newProject->type_id = $data['type_id'];
+        $newProject                 = new Project();
+        $newProject->title          = $data['title'];
+        $newProject->slug           = Project::slugger($data['title']);
+        $newProject->author         = $data['author'];
+        $newProject->creation_date  = $data['creation_date'];
+        $newProject->last_update    = $data['last_update'];
+        $newProject->collaborators  = $data['collaborators'];
+        $newProject->description    = $data['description'];
+        // $newProject->languages   = $data['languages'];
+        $newProject->link_github    = $data['link_github'];
+        $newProject->type_id        = $data['type_id'];
         $newProject->save();
 
         $newProject->languages()->sync($data['languages'] ?? []);
