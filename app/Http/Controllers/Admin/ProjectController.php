@@ -150,10 +150,10 @@ class ProjectController extends Controller
 
     public function restore($slug)
     {
-        Project::withTrashed()->where('slug', $slug)->restore();
-        $project = Project::where('slug', $slug)->firstOrFail();
 
         $project = Project::find($slug);
+        Project::withTrashed()->where('slug', $slug)->restore();
+        $project = Project::where('slug', $slug)->firstOrFail();
 
         return to_route('admin.project.trashed')->with('restore_success', $project);
     }
@@ -166,9 +166,10 @@ class ProjectController extends Controller
         return view('admin.projects.trashed', compact('trashedProjects'));
     }
 
-    public function harddelete($id)
+    public function harddelete($slug)
     {
-        $project = Project::withTrashed()->find($id);
+        $project = Project::withTrashed()->find($slug);
+        $project = Project::where('slug', $slug)->firstOrFail();
         $project->languages()->detach();
         $project->forceDelete();
 

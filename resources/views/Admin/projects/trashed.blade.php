@@ -2,20 +2,20 @@
 
 @section('contents')
 
-    {{-- @if (session('delete_success'))
+    @if (session('delete_success'))
     @php $project = session('delete_success') @endphp
     <div class="alert alert-danger">
         The project "{{ $project->title }}" has been Deleted
-        <form
+        {{-- <form
             action="{{ route("admin.project.cancel", ['project' => $project]) }}"
                 method="post"
                 class="d-inline-block"
             >
             @csrf
             <button class="btn btn-warning">Calcel</button>
-        </form>
+        </form> --}}
     </div>
-    @endif --}}
+    @endif
 
     @if (session('restore_success'))
         @php $project = session('restore_success') @endphp
@@ -58,7 +58,7 @@
                             @csrf
                             <button class="btn btn-warning">Restore</button>
                         </form>
-                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}">
+                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->slug }}">
                             Delete
                         </button>
                     </td>
