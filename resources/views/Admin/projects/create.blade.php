@@ -104,8 +104,8 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02" name="image">
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            <input type="file" class="form-control" id="image" name="image">
+            <label class="input-group-text" for="image">Upload</label>
         </div>
         
         <button class="btn btn-primary">Crea</button>

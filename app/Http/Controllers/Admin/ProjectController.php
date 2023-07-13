@@ -137,7 +137,6 @@ class ProjectController extends Controller
         $project->last_update = $data['last_update'];
         $project->collaborators = $data['collaborators'];
         $project->description = $data['description'];
-        // $project->languages = $data['languages'];
         $project->link_github = $data['link_github'];
         $project->type_id = $data['type_id'];
         $project->update();

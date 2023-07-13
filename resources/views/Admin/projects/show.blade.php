@@ -45,7 +45,7 @@
     </table>
 
     <div class="img-container">
-        <img class="w-100" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
+        <img class="w-100" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->image }}">
     </div>
 
 @endsection

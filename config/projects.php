@@ -10,7 +10,8 @@ return [
         "languages"        => [1, 2],
         "description"      => "A clone of Spotify Web",
         "link_github"      => "https://github.com/DavideFarci/html-css-spotifyweb.git",
-        "type_id"             => "1",
+        "type_id"          => "1",
+        "image"            => "uploads/spotify.png"
     ],
     [
         "title"            => "Campominato",
@@ -21,7 +22,8 @@ return [
         "languages"        => [1, 2, 3],
         "description"      => "A clone of Minefield",
         "link_github"      => "https://github.com/DavideFarci/js-campominato-dom.git",
-        "type_id"             => "1",
+        "type_id"          => "1",
+        "image"            => "uploads/campominato.png"
     ],
     [
         "title"            => "Social Post",
@@ -33,6 +35,7 @@ return [
         "description"      => "A clone of Facebook",
         "link_github"      => "https://github.com/DavideFarci/js-social-posts.git",
         "type_id"          => "1",
+        "image"            => "uploads/social_post.png"
     ],
     [
         "title"            => "BoolzApp",
@@ -44,6 +47,7 @@ return [
         "description"      => "A clone of WhatsApp",
         "link_github"      => "https://github.com/DavideFarci/vue-boolzapp.git",
         "type_id"          => "1",
+        "image"            => "uploads/boolzapp.png"
     ],
     [
         "title"            => "BoolFlix",
@@ -55,6 +59,7 @@ return [
         "description"      => "A clone of Nelflix",
         "link_github"      => "https://github.com/DavideFarci/vite-boolflix.git",
         "type_id"          => "1",
+        "image"            => "uploads/boolflix.png"
     ],
     [
         "title"            => "Project Html-VueJs",
@@ -66,6 +71,7 @@ return [
         "description"      => "A clone of a Website",
         "link_github"      => "https://github.com/DavideFarci/proj-html-vuejs.git",
         "type_id"          => "1",
+        "image"            => "uploads/project-html-vueJs.png"
     ],
     [
         "title"            => "DC Comics",
@@ -77,6 +83,7 @@ return [
         "description"      => "A clone of a Website of DC Comics",
         "link_github"      => "https://github.com/DavideFarci/laravel-dc-comics.git",
         "type_id"          => "2",
+        "image"            => "uploads/dc_comics.png"
     ],
     [
         "title"            => "Laravel Boolean",
@@ -88,5 +95,6 @@ return [
         "description"      => "A invoices organizer",
         "link_github"      => "https://github.com/SimoneRicco/laravel-boolean.git",
         "type_id"          => "3",
+        "image"            => "uploads/laravel_boolean.png"
     ],
 ];
