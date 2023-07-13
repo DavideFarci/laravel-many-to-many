@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('collaborators', 150)->nullable();
             $table->text('description')->nullable();
             $table->string('link_github', 150);
+            $table->string('image', 200)->nullable();
 
             $table->softDeletes();
             // $table->timestamps();
