@@ -3,7 +3,7 @@
 @section('contents')
 <h1>Add new Project</h1>
 
-    <form method="POST" action="{{ route('admin.project.store') }}">
+    <form method="POST" action="{{ route('admin.project.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -103,6 +103,12 @@
             </div>
         </div>
 
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        
         <button class="btn btn-primary">Crea</button>
+
     </form>
 @endsection

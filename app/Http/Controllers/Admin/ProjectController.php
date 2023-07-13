@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -17,9 +18,9 @@ class ProjectController extends Controller
         'last_update'   => 'required|date',
         'collaborators' => 'nullable|string|max:150',
         'description'   => 'nullable|string',
-        // 'languages'     => 'required|string|max:50',
         'link_github'   => 'required|string|max:150',
         'type_id'       => 'required|integer|exists:types,id',
+        'image'         => 'nullable|image|max:1024'
     ];
 
     /**
@@ -57,6 +58,9 @@ class ProjectController extends Controller
         $request->validate($this->validations);
 
         $data = $request->all();
+
+        //prendere il percorso dell'immagine
+        $image = Storage::put('uploads', $data['image']);
         // Salvare i dati nel database
         $newProject                 = new Project();
         $newProject->title          = $data['title'];
@@ -66,7 +70,7 @@ class ProjectController extends Controller
         $newProject->last_update    = $data['last_update'];
         $newProject->collaborators  = $data['collaborators'];
         $newProject->description    = $data['description'];
-        // $newProject->languages   = $data['languages'];
+        $newProject->image          = $image;
         $newProject->link_github    = $data['link_github'];
         $newProject->type_id        = $data['type_id'];
         $newProject->save();
@@ -115,8 +119,17 @@ class ProjectController extends Controller
 
         // validare i dati 
         $request->validate($this->validations);
-
         $data = $request->all();
+
+        // Faccio un controllo per fare in modo che se non viene modificata l'immagine, la vecchia non venga eliminata
+        if ($data['image']) {
+            $image = Storage::put('uploads', $data['image']);
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+            $project->image = $image;
+        }
+
         // Salvare i dati nel database
         $project->title = $data['title'];
         $project->author = $data['author'];
@@ -170,6 +183,10 @@ class ProjectController extends Controller
     {
         $project = Project::withTrashed()->where('slug', $slug)->first();
 
+        //calcello l'immagine solo se presente
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
 
         // se ho il trashed lo inserisco nel harddelete
         $project->languages()->detach();

@@ -3,7 +3,7 @@
 @section('contents')
 <h1>Edit Project</h1>
 
-    <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}">
+    <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -105,6 +105,11 @@
             <div class="invalid-feedback">
                 @error('link_github') {{ $message }} @enderror
             </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
 
         <button class="btn btn-primary">Edit</button>
